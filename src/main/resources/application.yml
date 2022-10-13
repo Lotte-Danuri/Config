@@ -1,0 +1,35 @@
+server:
+  port: 8888
+
+spring:
+  rabbitmq:
+    host: sbbro.xyz/rabbitmq
+    username: guest
+    password: guest
+  application:
+    name:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///home/ubuntu/configfile
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
+      env:
+        enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
+
+encrypt:
+  key-store:
+    location: file:///home/ubuntu/configfile/apiEncryptionKey.jks
+    password: test1234
+    alias: apiEncryptionKey
